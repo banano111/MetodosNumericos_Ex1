@@ -20,18 +20,13 @@ def menu():
     opc = int(input("Introduce tu opcion: "))
 
     dict.get(opc,default)()
-
-
+    
     return opc
 
 def Graficas():
     
     x = np.linspace(-5,5,100)
-
-    y = sympify(input("JAJA: "))
-    print(y)
-    print(type(y))
-
+    y = eval(input("JAJA: "))
 
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1)
