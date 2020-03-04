@@ -1,6 +1,11 @@
+import sympy
+from sympy import *
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+x, y = sympy.symbols('x y')
+sympy.init_printing(use_unicode=false)
 
 def menu():
     print("Metodos Numericos \n")
@@ -20,8 +25,13 @@ def menu():
     return opc
 
 def Graficas():
+    
     x = np.linspace(-5,5,100)
-    y = x**3-3
+
+    y = sympify(input("JAJA: "))
+    print(y)
+    print(type(y))
+
 
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1)
@@ -46,9 +56,18 @@ def default():
 def NR():
     print("NR")
 
+    fx = input("Introduce la funcion a derivar: ")
+
+    dx = sympy.diff(fx,x)
+
+    pprint (dx)
+
 def NRG():
     print("NRG")
-
+    x = np.linspace(-5,5,100)
+    y = x**3-3
+    
+    print(y)
 
 dict = {
     1: Graficas,
@@ -56,7 +75,5 @@ dict = {
     3: NRG
 }
 
-men=0.5
 
-while men < 4
-   men = menu()
+menu()
