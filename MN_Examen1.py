@@ -1,4 +1,6 @@
 import sympy
+import msvcrt
+import os
 from sympy import *
 import numpy as np
 import matplotlib.pyplot as plt
@@ -17,16 +19,52 @@ def menu():
     print("3. Realizar Metodo de Newton Raphson con Grafica de la funcion")
     print("4. Salir del Programa \n")
 
-    opc = int(input("Introduce tu opcion: "))
+    opc = eval(input("Introduce tu opcion: "))
 
     dict.get(opc,default)()
     
     return opc
 
 def Graficas():
-    
+    os.system ("cls")
+    print("1. Graficar Funcion \n")
+
     x = np.linspace(-5,5,100)
-    y = eval(input("JAJA: "))
+    y = eval(input("Ingrese la funcion a Graficar: "))
+
+    CrearGrafica(x,y)    
+
+def NR():
+    os.system ("cls")
+    print("2. Realizar Metodo de Newton Raphson \n")
+
+    fx = input("Introduce la funcion a derivar: ")
+
+    dx = sympy.diff(fx,x)
+
+    print("\n\n")
+    pprint (dx)
+
+    print("\n\nPresione una tecla para continuar...")
+    msvcrt.getch()
+
+def NRG():
+    os.system ("cls")
+    print("3. Realizar Metodo de Newton Raphson con Grafica de la funcion\n")
+
+    x = np.linspace(-5,5,100)
+    y = eval(input("Ingrese la funcion a Graficar: "))
+
+    CrearGrafica(x,y) 
+
+def default():
+    print("Opcion Incorrecta, Intente de Nuevo!")
+
+def Salida():
+    os.system ("cls")
+    print("Gracias por ocupar la aplicacion...")
+
+def CrearGrafica(x,y):
 
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1)
@@ -45,30 +83,16 @@ def Graficas():
 
     plt.show()
 
-def default():
-    print("Opcion Incorrecta, Intente de Nuevo!")
-
-def NR():
-    print("NR")
-
-    fx = input("Introduce la funcion a derivar: ")
-
-    dx = sympy.diff(fx,x)
-
-    pprint (dx)
-
-def NRG():
-    print("NRG")
-    x = np.linspace(-5,5,100)
-    y = x**3-3
     
-    print(y)
-
 dict = {
     1: Graficas,
     2: NR,
-    3: NRG
+    3: NRG,
+    4: Salida
 }
 
+bandera = 1
 
-menu()
+while bandera<4 :
+    os.system ("cls")
+    bandera = menu()
