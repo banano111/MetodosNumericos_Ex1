@@ -1,0 +1,11 @@
+{% extends 'base/base.html'%}
+
+{% block content %}
+
+<form action="/derivadas" method="post">
+    <label for="fx">Funcion a Derivar F(x): </label>
+    <input type="text" id="fx" name="fx" /><br>
+    <input type="submit" id="send-signup" name="signup" value="Enviar" />
+</form>
+
+{% endblock %}
