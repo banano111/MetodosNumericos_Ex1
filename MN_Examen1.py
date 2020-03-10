@@ -54,19 +54,23 @@ def NR():
         arriba = fx.subs(x,aleatorio)
         abajo = dx.subs(x,aleatorio)
         
-        vx = aleatorio - (arriba/abajo)
+        vx = aleatorio - float(arriba/abajo)
 
-        VA = (vx-aleatorio)/vx
+        vx = round(vx,4)
 
-        print(VA)
+        VA = float((vx-aleatorio)/vx) * -1
+        
+        VA = round(VA,4)
 
         ER = VA * 100
+
+        ER = round(ER,4)        
 
         print ("El Valor aleatorio usado es: ", aleatorio)
         print("El X1 = ", vx)
         print ("El Error Relativo del Caso ", ban, " es:", ER)
 
-        aleatorio = ER
+        aleatorio = vx
 
         if ER == 0:
             print ("El Valor de Xn es: ", vx)
