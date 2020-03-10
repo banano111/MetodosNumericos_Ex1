@@ -2,10 +2,27 @@
 
 {% block content %}
 
-<form action="/derivadas" method="post">
-    <label for="fx">Funcion a Derivar F(x): </label>
-    <input type="text" id="fx" name="fx" /><br>
-    <input type="submit" id="send-signup" name="signup" value="Enviar" />
-</form>
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col align-items-center">
+            <div class="card">
+                <div class="card-header">
+                    Metodo Newton - Raphsen
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Ingrese la función F(x)</h5>
+                    <form action="/MNR" method="post">
+                        <div class="form-group">
+                            <label for="fx">Funcion a Derivar F(x): </label>
+                            <input type="text" class="form-control" id="fx" name="fx" /><br>
+                            <input type="submit" class="btn btn-primary" id="send-signup" name="signup" value="Enviar" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}

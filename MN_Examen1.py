@@ -1,7 +1,10 @@
 import sympy
+from sympy import *
+
+from random import randint
 import msvcrt
 import os
-from sympy import *
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -38,12 +41,35 @@ def NR():
     os.system ("cls")
     print("2. Realizar Metodo de Newton Raphson \n")
 
-    fx = input("Introduce la funcion a derivar: ")
+    fx = eval(input("Introduce la funcion: "))
 
+    ER = 100
+    ban = 0
+    aleatorio = 2
     dx = sympy.diff(fx,x)
 
-    print("\n\n")
-    pprint (dx)
+    while ER > 0:
+        ban = ban + 1
+
+        arriba = fx.subs(x,aleatorio)
+        abajo = dx.subs(x,aleatorio)
+        
+        vx = aleatorio - (arriba/abajo)
+
+        VA = (vx-aleatorio)/vx
+
+        print(VA)
+
+        ER = VA * 100
+
+        print ("El Valor aleatorio usado es: ", aleatorio)
+        print("El X1 = ", vx)
+        print ("El Error Relativo del Caso ", ban, " es:", ER)
+
+        aleatorio = ER
+
+        if ER == 0:
+            print ("El Valor de Xn es: ", vx)
 
     print("\n\nPresione una tecla para continuar...")
     msvcrt.getch()
@@ -51,11 +77,19 @@ def NR():
 def NRG():
     os.system ("cls")
     print("3. Realizar Metodo de Newton Raphson con Grafica de la funcion\n")
+    aleatorio = 2
+    fx = eval(input("Introduce la funcion: "))
+    dx = sympy.diff(fx,x)
+    arriba = fx.subs(x,aleatorio)
+    abajo = dx.subs(x,aleatorio)
 
-    x = np.linspace(-5,5,100)
-    y = eval(input("Ingrese la funcion a Graficar: "))
+    
+    print(type(fx))
+    print("Valor Arriba: ",arriba)
+    print("Valor Abajo: ",abajo)
 
-    CrearGrafica(x,y) 
+    print("\n\nPresione una tecla para continuar...")
+    msvcrt.getch()
 
 def default():
     print("Opcion Incorrecta, Intente de Nuevo!")
