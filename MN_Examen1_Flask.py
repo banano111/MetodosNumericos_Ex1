@@ -7,8 +7,9 @@ import base64
 import io
 
 from sympy import *
-import numpy as np
+from numpy import *
 import matplotlib.pyplot as plt
+from sympy.parsing.sympy_parser import parse_expr
 
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
@@ -19,7 +20,7 @@ x, y = sympy.symbols('x y')
 
 def Graficacion():
     
-    x = np.linspace(-5,5,100)
+    x = linspace(-5,5,100)
     y = eval(request.form['fx'])
     
     fig = plt.figure()
@@ -48,9 +49,7 @@ def Graficacion():
     return pngImageB64String
 
 def Newton():
-    prev = eval(request.form['fx'])
-    
-    fx = prev.replace("np.",)
+    fx = parse_expr(request.form['fx'])
     
     resultados = []
     ER = 100
@@ -92,9 +91,9 @@ def MNR():
 @app.route('/MNR', methods=["POST"])
 def MNRes():
     resultados = Newton()
+    pngImageB64String = Graficacion()
     
-    
-    return render_template('derivadasres.html', resultados = resultados )
+    return render_template('derivadasres.html', resultados = resultados, image = pngImageB64String)
 
 @app.route('/graficas', methods=["GET"])
 def graficas():

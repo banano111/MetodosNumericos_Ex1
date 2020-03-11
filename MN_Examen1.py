@@ -34,14 +34,18 @@ def Graficas():
 
     x = np.linspace(-5,5,100)
     y = eval(input("Ingrese la funcion a Graficar: "))
-
+    
     CrearGrafica(x,y)    
 
 def NR():
     os.system ("cls")
     print("2. Realizar Metodo de Newton Raphson \n")
 
-    fx = eval(input("Introduce la funcion: "))
+    prev = eval(input("Introduce la funcion: "))
+    print(prev)
+    
+    fx = prev.replace("np.","")
+    print(fx)
 
     ER = 100
     ban = 0
