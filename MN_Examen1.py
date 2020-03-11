@@ -58,9 +58,11 @@ def NR():
 
         vx = round(vx,4)
 
-        VA = float((vx-aleatorio)/vx) * -1
+        VA = float((vx-aleatorio)/vx)
         
         VA = round(VA,4)
+
+        VA = abs(VA)
 
         ER = VA * 100
 

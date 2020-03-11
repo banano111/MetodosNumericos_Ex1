@@ -22,16 +22,32 @@
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="card">
-                <div class="card-header">
-                    Metodo Newton - Raphsen
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Valores De la Derivada</h5>
-                    <h6>El Valor de la Derivada F(x) introducida es: {{funcion_usr}}</h6>
-                    <h6>El valor de la derivada F(x) es: {{derivada}}</h6>
-                </div>
-            </div>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col"># Caso</th>
+                    <th scope="col">Valor Xn</th>
+                    <th scope="col">Error Relativo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for caso, valorx, error_rel in resultados %}
+                  <tr>
+                    <th scope="row">{{caso}}</th>
+                    <td>{{valorx}}</td>
+                    <td>{{error_rel}}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src={{image}}>
         </div>
     </div>
 </div>
