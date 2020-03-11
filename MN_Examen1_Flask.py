@@ -14,7 +14,7 @@ from sympy.parsing.sympy_parser import parse_expr
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-
+plt.switch_backend('agg')
 app = Flask(__name__, template_folder="templates")
 x, y = sympy.symbols('x y')
 
@@ -54,14 +54,14 @@ def Newton():
     resultados = []
     ER = 100
     ban = 0
-    aleatorio = 2
+    aleatorio = 1
     dx = sympy.diff(fx,x)
 
     while ER > 0:
         ban = ban + 1
         arriba = fx.subs(x,aleatorio)
         abajo = dx.subs(x,aleatorio)    
-        
+            
         vx = aleatorio - float(arriba/abajo)
         vx = round(vx,4)
         VA = float((vx-aleatorio)/vx)
@@ -73,10 +73,11 @@ def Newton():
         resultados.append(["Caso "+str(ban),vx,str(ER)+"%"])
 
         aleatorio = vx
-
-        if ER == 0:
-            res_final = VA
-
+            
+        if ban > 10:
+            break
+    
+    print(resultados)
     return resultados
     
 @app.route('/index')
