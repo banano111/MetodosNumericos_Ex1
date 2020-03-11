@@ -9,30 +9,26 @@ app = Flask(__name__, template_folder="templates")
 @app.route('/')
 def index():
     return render_template('index.html')
-
-@app.route('/MNR', methods=["GET"])
-def MNR():
-    return render_template('derivadas.html')
-
-@app.route('/MNR', methods=["POST"])
-def MNRes():
-    fx = request.form['fx']
-    resultados = mn.Newton(fx)
-    pngImageB64String = mn.Graficacion(fx)
     
-    return render_template('derivadasres.html', resultados = resultados, image = pngImageB64String)
+@app.route('/MNR', methods=["GET", "POST"])
+def MNR():
+    if request.method == "GET":
+        return render_template('metodoNR.html')
+    else:
+        fx = request.form['fx']
+        resultados = mn.Newton(fx)
+        pngImageB64String = mn.Graficacion(fx)
+        return render_template('metodoNR_res.html', resultados = resultados, image = pngImageB64String)
 
-@app.route('/graficas', methods=["GET"])
+@app.route('/graficas', methods=["GET", "POST"])
 def graficas():
-    return render_template('graficas_form.html')
 
-@app.route('/graficas', methods=["POST"])
-def graficas_res():
-
-    fx = request.form['fx']
-    pngImageB64String = mn.Graficacion(fx)
-
-    return render_template('graficas.html', image = pngImageB64String)
+    if request.method == "GET":
+        return render_template('graficas_form.html')
+    else:
+        fx = request.form['fx']
+        pngImageB64String = mn.Graficacion(fx)
+        return render_template('graficas.html', image = pngImageB64String)    
 
 if __name__ == '__main__':
     app.run(debug = True, port=8000)
