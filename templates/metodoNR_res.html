@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row align-items-center">
-        <div class="col-sm-6">
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col">
             <div class="card">
                 <div class="card-header">
                     Metodo Newton - Raphsen
@@ -21,35 +21,46 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
-            <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col"># Caso</th>
-                    <th scope="col">Valor Xn</th>
-                    <th scope="col">Error Relativo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                {% for caso, valorx, error_rel in resultados %}
-                  <tr>
-                    <th scope="row">{{caso}}</th>
-                    <td>{{valorx}}</td>
-                    <td>{{error_rel}}</td>
-                  </tr>
-                {% endfor %}
-                </tbody>
-              </table>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                  Gráfica de la Función
+                </div>
+                <div class="card-body">
+                    <img src={{image}}>
+                </div>
+              </div>
         </div>
+    </div>
+    <div class="row mt-5">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                      Valores Encontrados
+                    </div>
+                    <div class="card-body">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col"># Caso</th>
+                            <th scope="col">Valor Xn</th>
+                            <th scope="col">Error Relativo</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for caso, valorx, error_rel in resultados %}
+                          <tr>
+                            <th scope="row">{{caso}}</th>
+                            <td>{{valorx}}</td>
+                            <td>{{error_rel}}</td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+            </div>  
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <img src={{image}}>
-        </div>
-    </div>
-</div>
 
 {% endblock %}

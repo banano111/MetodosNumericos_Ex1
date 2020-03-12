@@ -31,6 +31,11 @@ def Graficacion(fx):
 
     plt.grid(alpha=.4,linestyle='--')
 
+    plt.title("Funcion F(x): " + fx)
+
+    plt.xlim(-8, 8)
+    plt.ylim(-8, 8)
+
     plt.plot(x,y,'g')
 
     # Convert plot to PNG image
