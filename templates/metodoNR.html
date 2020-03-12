@@ -2,20 +2,20 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row h-100 d-flex justify-content-center">
-        <div class="col">
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <div class="col mx-auto">
             <div class="card">
                 <div class="card-header">
                     Metodo Newton - Raphsen
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Ingrese la función F(x)</h5>
+                    <h5 class="card-title">Ingrese la función F(x) en la cuál se aplicará el método</h5>
                     <form action="/MNR" method="post">
                         <div class="form-group">
-                            <label for="fx">Funcion a Derivar F(x): </label>
-                            <input type="text" class="form-control" id="fx" name="fx" /><br>
-                            <input type="submit" class="btn btn-primary" id="send-signup" name="signup" value="Enviar" />
+                            <label for="fx">Funcion F(x): </label>
+                            <input type="text" class="form-control" id="fx" name="fx" required/><br>
+                            <input type="submit" class="btn btn-primary" value="Enviar"/>
                         </div>
                     </form>
                 </div>
@@ -23,6 +23,5 @@
         </div>
     </div>
 </div>
-
 
 {% endblock %}
