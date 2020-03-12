@@ -26,8 +26,6 @@ def Graficacion(fx):
     ax.spines['right'].set_color('none')
     ax.spines['bottom'].set_position('zero')
     ax.spines['top'].set_color('none')
-    ax.spines['left'].set_smart_bounds(True)
-    ax.spines['bottom'].set_smart_bounds(True)
     ax.xaxis.set_ticks_position('bottom')
     ax.yaxis.set_ticks_position('left')
 
@@ -60,13 +58,10 @@ def Newton(valor):
         arriba = fx.subs(x,aleatorio)
         abajo = dx.subs(x,aleatorio)    
             
-        vx = aleatorio - float(arriba/abajo)
-        vx = round(vx,4)
+        vx = round(aleatorio - float(arriba/abajo),4)
         VA = float((vx-aleatorio)/vx)
-        VA = round(VA,4)
-        VA = abs(VA)
-        ER = VA * 100
-        ER = round(ER,4)        
+        VA = abs(round(VA,4))
+        ER = round(VA * 100,4) 
 
         resultados.append(["Caso "+str(ban),vx,str(ER)+"%"])
 

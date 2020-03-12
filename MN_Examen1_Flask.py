@@ -22,7 +22,6 @@ def MNR():
 
 @app.route('/graficas', methods=["GET", "POST"])
 def graficas():
-
     if request.method == "GET":
         return render_template('graficas_form.html')
     else:
