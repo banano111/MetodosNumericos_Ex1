@@ -2,5 +2,63 @@
 
 {% block content %}
 
+<div class="container-fluid mt-5">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">
+                  Equipo 2 - Métodos Númericos
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-center">Universidad del Valle de México <br><br>Campus San Rafael <br><br>Integrantes</h5>
+                  <p class="card-text text-center">
+
+                      <br><img src="{{url_for('static', filename='images/ap.jpg')}}" class="rounded w-25 h-25 mx-auto d-block"><br>
+                      Alan Arturo Pedraza Luna <br>
+
+                      <br><img src="{{url_for('static', filename='images/cc.jpg')}}" class="rounded w-25 h-25 mx-auto d-block"><br>
+                      Citlali Castellanos Delgado <br>
+
+                      <br><img src="{{url_for('static', filename='images/av.jpg')}}" class="rounded w-25 h-25 mx-auto d-block"><br>
+                      Alondra Jazmin Villagomez Vazquez <br>
+
+                      <br><img src="{{url_for('static', filename='images/rz.jpg')}}" class="rounded w-25 h-25 mx-auto d-block"><br>
+                      Rolando Zuñiga Hernandez <br>
+
+                      <br><img src="{{url_for('static', filename='images/mc.jpg')}}" class="rounded w-25 h-25 mx-auto d-block"><br>
+                      Manuel Castañeda <br>
+
+                      <br><img src="{{url_for('static', filename='images/ba.jpg')}}" class="rounded w-25 h-25 mx-auto d-block"><br>
+                      Brallam Ortiz <br>
+                  </p>
+                </div>
+              </div>
+        </div>
+        <div class="col-7">
+            <div class="card">
+                <div class="card-header">
+                  Método Newton - Rapshon
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Concepto del Método</h5>
+                  <p class="card-text"><span class="Linkify bbcode-adjustments">Este método  de resolución numérica busca un cero de la función<font color="#0000ff"><b> f(x)</b></font> por aproximaciones sucesivas a partir de un valor inicial <b><font color="#ff0000">x<sub>0</sub></font></b>. El valor sucesivo <font color="#ff0000"><b>x<sub>n+1</sub></b></font> es la abscisa del punto en que la tangente a la gráfica de <font color="#0000ff"><b>f(x)</b></font> en <font color="#ff0000"><b>x<sub>n</sub></b></font> corta al eje <b>Ox</b>.<br><br>Es decir: <br>
+
+                    <img class="mx-auto d-block" src="{{url_for('static', filename='images/1.png')}}"><br>
+                    
+                    Es por tanto equivalente a aplicar el método de iteraciones a la función: <br>
+                    
+                    <br><img class="mx-auto d-block" src="{{url_for('static', filename='images/2.png')}}"><br>
+                    
+                    Naturalmente es necesario que la función sea derivable. Si la raíz es múltiple, el método es inaplicable, pues la derivada se anula. Puede sustituirse <b><font color="#0000ff">f(x)</font></b> por:
+                    
+                    <br><br><img class="mx-auto d-block" src="{{url_for('static', filename='images/3.png')}}"><br>
+                    
+                    Que tiene los mismos ceros que <font color="#0000ff"><b>f(x)</b></font> pero todos simples. 
+                </div>
+              </div>
+        </div>
+    </div>
+
+</div>
 
 {% endblock %}
