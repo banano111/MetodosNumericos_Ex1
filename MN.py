@@ -54,25 +54,38 @@ def Newton(valor):
     
     resultados = []
     ER = 100
-    ban = 0
+    ban = 0 
+    alerta = 0
     aleatorio = 2
     dx = sympy.diff(fx,x)
 
     while ER > 0:
         ban = ban + 1
         arriba = fx.subs(x,aleatorio)
-        abajo = dx.subs(x,aleatorio)    
-            
+        abajo = dx.subs(x,aleatorio)
         vx = round(aleatorio - float(arriba/abajo),4)
-        VA = float((vx-aleatorio)/vx)
-        VA = abs(round(VA,4))
-        ER = round(VA * 100,4) 
 
+        if vx == 0:
+            alerta = 1
+            break
+        else:
+            VA = float((vx-aleatorio)/vx)
+            VA = abs(round(VA,4))
+            ER = round(VA * 100,4)
+
+        if ban==1: 
+            resVX = vx
+            resER = ER
+        else:
+            if ER < resER:
+                resVX = vx
+                resER = ER
+        
         resultados.append(["Caso "+str(ban),vx,str(ER)+"%"])
 
         aleatorio = vx
             
-        if ban > 10:
+        if ban > 20:
             break
 
-    return resultados
+    return resultados, alerta, resVX, resER

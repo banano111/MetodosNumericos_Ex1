@@ -16,9 +16,13 @@ def MNR():
         return render_template('metodoNR.html')
     else:
         fx = request.form['fx']
-        resultados = mn.Newton(fx)
-        pngImageB64String = mn.Graficacion(fx)
-        return render_template('metodoNR_res.html', resultados = resultados, image = pngImageB64String)
+        resultados, alerta, resVX, resER = mn.Newton(fx)
+        
+        if alerta == 1:
+            return render_template('metodoNR_alerta.html')
+        else:
+            pngImageB64String = mn.Graficacion(fx)
+            return render_template('metodoNR_res.html', resultados = resultados, image = pngImageB64String, resVX = resVX, resER = resER)
 
 @app.route('/graficas', methods=["GET", "POST"])
 def graficas():

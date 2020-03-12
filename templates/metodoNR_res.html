@@ -4,24 +4,29 @@
 
 <div class="container mt-5">
     <div class="row justify-content-center align-items-center">
+
         <div class="col">
+
             <div class="card">
                 <div class="card-header">
-                    Metodo Newton - Raphsen
+                    Metodo Newton - Raphson
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Ingrese la función F(x)</h5>
+                    <h5 class="card-title">Ingrese la función F(x) en la cuál se aplicará el método</h5>
                     <form action="/MNR" method="post">
                         <div class="form-group">
-                            <label for="fx">Funcion a Derivar F(x): </label>
-                            <input type="text" class="form-control" id="fx" name="fx" /><br>
+                            <label for="fx">Funcion F(x): </label>
+                            <input type="text" class="form-control" id="fx" name="fx" required/><br>
                             <input type="submit" class="btn btn-primary" id="send-signup" name="signup" value="Enviar" />
                         </div>
                     </form>
                 </div>
             </div>
+
         </div>
+        
         <div class="col">
+            
             <div class="card">
                 <div class="card-header">
                   Gráfica de la Función
@@ -29,36 +34,56 @@
                 <div class="card-body">
                     <img src={{image}}>
                 </div>
-              </div>
+            </div>
+
         </div>
+
     </div>
-    <div class="row mt-5">
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                      Valores Encontrados
-                    </div>
-                    <div class="card-body">
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th scope="col"># Caso</th>
-                            <th scope="col">Valor Xn</th>
-                            <th scope="col">Error Relativo</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        {% for caso, valorx, error_rel in resultados %}
-                          <tr>
-                            <th scope="row">{{caso}}</th>
-                            <td>{{valorx}}</td>
-                            <td>{{error_rel}}</td>
-                          </tr>
-                        {% endfor %}
-                        </tbody>
-                      </table>
-                    </div>
-            </div>  
+    
+    <div class="row mt-5 justify-content-center align-items-center">
+
+        <div class="col">
+
+            <div class="card">
+                <div class="card-header">
+                  Valores Encontrados
+                </div>
+                <div class="card-body">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col"># Caso</th>
+                        <th scope="col">Valor Xn</th>
+                        <th scope="col">Error Relativo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for caso, valorx, error_rel in resultados %}
+                      <tr {% if valorx == resVX %} class="table-success" {% endif %}>
+                        <th scope="row">{{caso}}</th>
+                        <td>{{valorx}}</td>
+                        <td>{{error_rel}}</td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col">
+            <div class="card border-success mb-3">
+                <h5 class="card-header text-success">Valores Encontrados</h5>
+                <div class="card-body">
+                  <h5 class="card-title text-success">Valor en Xn</h5>
+                  <p class="card-text text-success">{{resVX}}</p>
+                  <br><h5 class="card-title text-success">Valor Relativo</h5>
+                  <p class="card-text text-success">{{resER}}</p>
+                </div>
+              </div>
+
+        </div>
+
     </div>
 </div>
 
